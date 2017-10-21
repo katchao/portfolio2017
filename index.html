@@ -5,85 +5,58 @@
 	<link rel="stylesheet" type="text/css" href="styles/styles.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
-	<div id="intro-wrapper">
-		<h1>Katherine Chao</h1>
+	<script id="header-template" type="text/x-handlebars-template">
+		<h1>katherine chao</h1>
 		<nav>
-			<a href="#">about me</a>
+			<a href="#" class="about-me-link">about me</a>
 			<a href="#">projects</a>
 			<a href="#">contact</a>
 		</nav>
+	</script>
+
+	<div class="intro-wrapper">
+		<div class="intro">
+			<div class="header-placeholder"></div>
+		</div>
 	</div>
 
-	<div id="wrapper">
+
+
+
+	<div class="content-wrapper">
 
 		<header>
-			<h1>Katherine Chao</h1>
-			<nav>
-				<span id="developer-link"><a href="#/developer">developer</a></span>,
-				<span id="artist-link"><a href="#/artist">artist</a></span>,
-				<span id="trotter-link"><a href="#/globetrotter">globe trotter</a></span>,& 
-				<span id="human-link"><a href="#/contact">friendly human</a></span>
-			</nav>
+			<div class="header-placeholder"></div>
 		</header>
 
 
+		<div class="content">
 
-
-		<div id="content">
-
-			<!-- Developer Tab -->
-			<section id="developer-content">
+			<!-- About Me -->
+			<section class="about-me-section">
 				<p>My primary interest is in programming. Aside from my formal studies in computer science, a large part of my childhood was spent in front of the computer building/designing websites after stumbling upon the art form on accident at age 11 whilst browsing Pokemon fan content. Something clicked and and I am happy to say that coding has been a large part of my life since then.</p>
 
 				<p>Most of my expertise is in web development, but I'm always looking for new ways to apply my talents! Check out my personal projects listed below, ranging from full-blown websites to small code snippets.</p>
 
 			</section>
 
-
-			<!-- Friendly Human Tab -->
-			<section id="human-content">
-				<p>Please refer to the links below if you're interested in reaching out to me for any reason!</p>
-
-				<div class="info email">Email: <a href="mailto:kchao1994@gmail.com">kchao1994@gmail.com</a></div>
-				<div class="info github">Github: <a href="https://github.com/kchao1994" target="_blank">kchao1994</a></div>
-				<div class="info linkedin"><a href="https://www.linkedin.com/in/kchao1994" target="_blank">Linkedin</a></div>
-
-				<br />
-
-				<p>Also of revelance is my <a href="resume.pdf" target="_blank">resume</a>.</p>
-			</section>
-
 		</div>
+
 
 	</div>
 
 
 
-
-
-
-
 	<script src="scripts/main.js"></script>
 
-	<!-- Start of StatCounter Code for Default Guide -->
-	<script type="text/javascript">
-	var sc_project=10312845; 
-	var sc_invisible=1; 
-	var sc_security="125aa7b4"; 
-	var scJsHost = (("https:" == document.location.protocol) ?
-	"https://secure." : "http://www.");
-	document.write("<sc"+"ript type='text/javascript' src='" +
-	scJsHost+
-	"statcounter.com/counter/counter.js'></"+"script>");
-	</script>
-	<noscript></noscript>
-	<!-- End of StatCounter Code for Default Guide -->
+
 
 </body>
 </html>
