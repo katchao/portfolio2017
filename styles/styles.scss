@@ -1,25 +1,46 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300|Unica+One');
-
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300, 400|Unica+One');
 $font-stack: 'Open Sans', sans-serif;
 
-@mixin color-transition($seconds) {
-	-webkit-transition: color $seconds;
-    -moz-transition:    color $seconds;
-    -ms-transition:     color $seconds;
-    -o-transition:      color $seconds;
-    transition:         color $seconds;
+@mixin transition($property, $seconds) {
+	-webkit-transition: $property $seconds;
+    -moz-transition:    $property $seconds;
+    -ms-transition:     $property $seconds;
+    -o-transition:      $property $seconds;
+    transition:         $property $seconds;
+}
+
+@mixin vertical-align($position: relative, $percent: 50%) {
+	position: $position;
+	top: $percent;
+	-webkit-transform: translateY(-$percent);
+	-ms-transform: translateY(-$percent);
+	transform: translateY(-$percent);
 }
 
 
+html,
 body {
+	margin: 0;
+	height: 100%;
+	position: relative;
 	font-family: $font-stack;
 }
 
-a:link, a:active, a:visited {
+.bg {
+	position: absolute;
+	width: 100%;
+	height: 45%;
+	@include transition(opacity, 2s);
+}
+
+.hidden { opacity: 0; }
+
+
+
+a {
 	text-decoration: none;
 	color: #898989;
-	@include color-transition(0.5s);
+	@include transition(color, 0.5s);
 
 }
 
@@ -27,77 +48,105 @@ a:hover {
 	color: #cccccc;
 }
 
-.intro-wrapper {
-    align-items: center; 
-    display: flex; 
-    justify-content: center;
-    height: 80%;
-
-    .intro {
-		align-self: center;
-		text-align: center;
+header {
+	h1 {
+		font-size: 70px;
+		margin: 0px;
+		text-transform: uppercase;
+		font-family: 'Unica One', cursive;
 	}
 
-}
+	nav {
+		cursor: default;
 
+		a {
+			font-weight: 300;
+			display: inline-block;
+			margin: 0px 10px 0px 10px;
+			position: relative;
+		}
 
-h1 {
-	font-size: 70px;
-	margin-bottom: 0px;
-	text-transform: uppercase;
-	font-family: 'Unica One', cursive;
-}
+		/* animating the link underline */
+		a:before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			bottom: 0;
+			left: 0;
+			background-color: #cccccc;
+			visibility: hidden;
+			-webkit-transform: scaleX(0);
+			transform: scaleX(0);
+			-webkit-transition: all 0.3s ease-in-out 0s;
+			transition: all 0.3s ease-in-out 0s;
+		}
 
+		a:hover:before {
+			visibility: visible;
+			-webkit-transform: scaleX(1);
+			transform: scaleX(1);
+		}
 
-nav {
-	a {
-		font-size: 25px;
-		display: inline-block;
-		margin: 0px 10px 0px 10px;
-		position: relative;
-	}
-
-	/* animating the link underline */
-	a:before {
-		content: "";
-		position: absolute;
-		width: 100%;
-		height: 2px;
-		bottom: 0;
-		left: 0;
-		background-color: #cccccc;
-		visibility: hidden;
-		-webkit-transform: scaleX(0);
-		transform: scaleX(0);
-		-webkit-transition: all 0.3s ease-in-out 0s;
-		transition: all 0.3s ease-in-out 0s;
-	}
-
-	a:hover:before {
-		visibility: visible;
-		-webkit-transform: scaleX(1);
-		transform: scaleX(1);
+		.middot {
+			font-size: 20px;
+		}
 	}
 }
 
 
-.content-wrapper {
-	display: none;
+
+.intro-header {
+	text-align: center;
+	@include vertical-align($percent: 40%);
+
+    h1 {
+    	color: white;
+    	font-size: 100px;
+    }
+
+    nav {
+    	font-size: 35px;
+    }
+}
+
+.content-header {
+	text-align: left;
+	position: relative;
+	margin-left: 12%;
+	margin-right: 14%;
+	padding-top: 60px;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 
 	h1 {
 		display: inline-block;
+		color: black;
 	}
 
 	nav {
 		display: inline-block;
+		text-align: right;
+		margin-top: 40px;
+		font-size: 27px;
 	}
+}
+
+
+
+.content-wrapper {
+	display: none;
+	position: relative;
+	margin-top: 30px;
+	width: 60%;
+	margin: auto;
 
 	.page {
 		line-height: 180%;
-		font-size: 20px;
+		font-size: 19px;
 		color: #333333;
-		width: 80%;
-		margin: auto;
 	}
 }
 
