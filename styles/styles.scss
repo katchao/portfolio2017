@@ -143,6 +143,10 @@ header {
 	width: 60%;
 	margin: auto;
 
+	#about-section { display: none; }
+	#projects-section { display: none; }
+	#contact-section { display: none; }
+
 	.page {
 		line-height: 180%;
 		font-size: 19px;

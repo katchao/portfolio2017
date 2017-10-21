@@ -1,6 +1,14 @@
 
-var contentShowing = false;
 
+
+
+
+var contentShowing = false;
+var currentPage;
+var currentLink;
+
+
+// change from intro to content view
 function flipView() {
 	if(!contentShowing) {
 		$('body').fadeOut('slow', function() {
@@ -12,20 +20,31 @@ function flipView() {
 			clearInterval(bgInterval); // stop animated bg timer
 			$('.bg').css('opacity', '0');
 
-
-
 			contentShowing = true;
 		});
-
 	}
-
-	/*else {
-		$('.content-wrapper').hide();
-		$('header').removeClass('content-header').addClass('intro-header');
-		contentShowing = false;
-	}*/
 }
 
+
+// change the page as someone clicks on a link
+function flipPage(page) {
+	if(currentPage) {
+		$(this.currentPage.section).fadeOut(function() { setPage(page) });
+	}
+	else {
+		setPage(page);
+	}
+
+}
+
+// called from flipPage to avoid repeating code
+function setPage(page) {
+	currentPage = page;
+	$(this.currentPage.section).fadeIn('slow');
+}
+
+
+// random bg generator
 function newGradient() {
 	var c1 = {
 		r: Math.floor(Math.random()*255),
@@ -43,6 +62,7 @@ function newGradient() {
 	return 'radial-gradient(at top left, '+c1.rgb+', '+c2.rgb+')';
 }
 
+// random bg generator
 function rollBg() {
 	$('.bg.hidden').css('background', newGradient());
 	$('.bg').toggleClass('hidden');
@@ -57,22 +77,49 @@ $(function(){
 	var headerTemplateComp = headerTemplate();
 	$('.header-placeholder').html(headerTemplateComp);
 
+	// links setup
+	aboutLink = {
+		name: "About",
+		link: document.getElementById('about-link'),
+		section: document.getElementById('about-section'),
+	}
+	projectsLink = {
+		name: "Projects",
+		link: document.getElementById('projects-link'),
+		section: document.getElementById('projects-section'),
+	}
+	contactLink = {
+		name: "Contact",
+		link: document.getElementById('contact-link'),
+		section: document.getElementById('contact-section'),
+	}
 
 	$('.nav-link').click(function() {
 		flipView();
 	});
 
+	$('#about-link').click(function() {
+		flipPage(aboutLink);
+	});
+
+	$('#projects-link').click(function() {
+		flipPage(projectsLink);
+	});
+
+	$('#contact-link').click(function() {
+		flipPage(contactLink);
+	});
 
 
-
-
-
-	// test code
+	// page setup
 	$('.content-wrapper').hide();
 	$('header').addClass('intro-header');
 
+	// animated  background
 	rollBg();
 	bgInterval = setInterval(rollBg, 5000);
+
+
 
 });
 

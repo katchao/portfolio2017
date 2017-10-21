@@ -101,6 +101,12 @@ header nav {
   margin-top: 30px;
   width: 60%;
   margin: auto; }
+  .content-wrapper #about-section {
+    display: none; }
+  .content-wrapper #projects-section {
+    display: none; }
+  .content-wrapper #contact-section {
+    display: none; }
   .content-wrapper .page {
     line-height: 180%;
     font-size: 19px;
