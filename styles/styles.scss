@@ -13,7 +13,7 @@ $font-stack: 'Open Sans', sans-serif;
 
 
 body {
-	font: 100% $font-stack;
+	font-family: $font-stack;
 }
 
 a:link, a:active, a:visited {
@@ -90,6 +90,14 @@ nav {
 
 	nav {
 		display: inline-block;
+	}
+
+	.page {
+		line-height: 180%;
+		font-size: 20px;
+		color: #333333;
+		width: 80%;
+		margin: auto;
 	}
 }
 

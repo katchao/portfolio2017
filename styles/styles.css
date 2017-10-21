@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300|Unica+One");
 body {
-  font: 100% "Open Sans", sans-serif; }
+  font-family: "Open Sans", sans-serif; }
 
 a:link, a:active, a:visited {
   text-decoration: none;
@@ -60,5 +60,11 @@ nav {
     display: inline-block; }
   .content-wrapper nav {
     display: inline-block; }
+  .content-wrapper .page {
+    line-height: 180%;
+    font-size: 20px;
+    color: #333333;
+    width: 80%;
+    margin: auto; }
 
 /*# sourceMappingURL=styles.css.map */

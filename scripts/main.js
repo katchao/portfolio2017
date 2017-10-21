@@ -25,14 +25,16 @@ $(function(){
 	$('.header-placeholder').html(headerTemplateComp);
 
 
-
-
-	$('.content-wrapper').show();
-	$('.intro-wrapper').hide();
-
 	$('.about-me-link').click(function() {
 		flipView();
 	});
+
+
+
+
+	// test code
+	$('.content-wrapper').show();
+	$('.intro-wrapper').hide();
 
 
 });
