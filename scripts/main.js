@@ -1,8 +1,6 @@
 
 
 
-
-
 var contentShowing = false;
 var currentPage;
 var currentLink;
@@ -26,6 +24,8 @@ function flipView() {
 }
 
 
+
+
 // change the page as someone clicks on a link
 function flipPage(page) {
 	if(currentPage) {
@@ -37,11 +37,43 @@ function flipPage(page) {
 
 }
 
+
+
+
 // called from flipPage to avoid repeating code
 function setPage(page) {
 	currentPage = page;
+	if(currentPage === projectsLink) {
+		loadAllProjectsTemplate();
+	}
 	$(this.currentPage.section).fadeIn('slow');
 }
+
+
+
+
+// set up the all Projects page
+function loadAllProjectsTemplate() {
+	var theTemplateScript = $("#all-projects-template").html();
+	var theTemplate = Handlebars.compile(theTemplateScript);
+
+
+	$.getJSON( "projects.json",
+		function(data) {
+			var context = { list: data };
+
+			var theCompiledHtml = theTemplate(context);
+			$('.all-projects-placeholder').html(theCompiledHtml);
+
+		})
+	.fail(
+		function(jqxhr, textStatus, error) {
+			var err = textStatus + ", " + error;
+			console.log( "Request Failed: " + err );
+		});
+}
+
+
 
 
 // random bg generator
@@ -62,11 +94,35 @@ function newGradient() {
 	return 'radial-gradient(at top left, '+c1.rgb+', '+c2.rgb+')';
 }
 
+
+
 // random bg generator
 function rollBg() {
 	$('.bg.hidden').css('background', newGradient());
 	$('.bg').toggleClass('hidden');
 }
+
+
+// render page from hash
+function render(url) {
+	flipView();
+	if(url === 'about') {
+		flipPage(aboutLink);
+	} else if(url === 'projects') {
+		flipPage(projectsLink);
+	} else if(url === 'contact') {
+		flipPage(contactLink);
+	} else if(url === 'project') {
+		renderSingleProject();
+	}
+}
+
+function renderSingleProject() {
+	
+}
+
+
+
 
 
 $(function(){
@@ -76,6 +132,7 @@ $(function(){
 	var headerTemplate = Handlebars.compile($("#header-template").html());
 	var headerTemplateComp = headerTemplate();
 	$('.header-placeholder').html(headerTemplateComp);
+
 
 	// links setup
 	aboutLink = {
@@ -94,31 +151,25 @@ $(function(){
 		section: document.getElementById('contact-section'),
 	}
 
-	$('.nav-link').click(function() {
-		flipView();
-	});
-
-	$('#about-link').click(function() {
-		flipPage(aboutLink);
-	});
-
-	$('#projects-link').click(function() {
-		flipPage(projectsLink);
-	});
-
-	$('#contact-link').click(function() {
-		flipPage(contactLink);
-	});
-
 
 	// page setup
 	$('.content-wrapper').hide();
 	$('header').addClass('intro-header');
 
+
 	// animated  background
 	rollBg();
 	bgInterval = setInterval(rollBg, 5000);
 
+
+	// event handler for url change
+	if(window.location.hash) {
+		render(decodeURI(window.location.hash.substring(1)));
+	}
+
+	$(window).on('hashchange', function() {
+		render(decodeURI(window.location.hash.substring(1)));
+	})
 
 
 });

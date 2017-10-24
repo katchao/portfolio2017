@@ -49,6 +49,9 @@ a:hover {
 }
 
 header {
+	cursor: default;
+
+
 	h1 {
 		font-size: 70px;
 		margin: 0px;
@@ -57,8 +60,7 @@ header {
 	}
 
 	nav {
-		cursor: default;
-
+		
 		a {
 			font-weight: 300;
 			display: inline-block;
@@ -160,4 +162,74 @@ header {
 
 @media screen and (max-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
 
+}
+
+
+
+
+/* project thumbnails */
+.project-thumb-container {
+  position: relative;
+  display: inline-block;
+    animation: fadeIn 0.5s linear;
+  animation-fill-mode: both;
+}
+
+.project-thumbnail {
+  display: block;
+}
+
+.project-thumb-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.project-thumb-container:hover .project-thumb-overlay {
+  opacity: 1;
+}
+
+.project-thumb-text {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+
+// fly in animation for project thumbnails
+
+$total-items: 5;
+
+
+@for $i from 1 through $total-items {
+  .project-thumb-container:nth-child(#{$i}) {
+    animation-delay: .25s * $i;
+  }
+}
+
+// Keyframe animation
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  75% {
+    opacity: 0.5;
+    top: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
 }

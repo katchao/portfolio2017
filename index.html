@@ -16,24 +16,57 @@
 	<div class="bg hidden"></div>
 
 
+	<!-- Handlebar templates -->
 	<script id="header-template" type="text/x-handlebars-template">
 		<h1>katherine chao</h1>
 		<nav>
-			<a href="#" class="nav-link" id="about-link">about</a>
+			<a href="#about" class="nav-link" id="about-link">about</a>
 			<span class="middot">&middot;</span>
-			<a href="#" class="nav-link" id="projects-link">projects</a>
+			<a href="#projects" class="nav-link" id="projects-link">projects</a>
 			<span class="middot">&middot;</span>
-			<a href="#" class="nav-link" id="contact-link">contact</a>
+			<a href="#contact" class="nav-link" id="contact-link">contact</a>
 		</nav>
 	</script>
 
 
+
+	<script id="all-projects-template" type="text/x-handlebars-template">
+		<div class="all-projects">
+
+			{{#each list}}
+				<a href="#">
+					<div class="project-thumb-container">
+						<img src="http://placehold.it/257x200.jpg" alt="Avatar" class="project-thumbnail">
+						<div class="project-thumb-overlay">
+							<div class="project-thumb-text">{{ this.title }}</div>
+						</div>
+					</div>
+				</a>
+			{{/each}}
+
+		</div>
+
+
+
+	</script>
+
+
+
+	<script id="project-template" type="text/x-handlebars-template">
+		<div class="project">
+
+		</div>
+	</script>
+
+
+
+	<!-- start of actual HTML -->
 	<header class="header-placeholder"></header>
 
 
 	<div class="content-wrapper">
 
-		<!-- About Me -->
+		<!-- About -->
 		<div class="page" id="about-section">
 			<p>My primary interest is in programming. Aside from my formal studies in computer science, a large part of my childhood was spent in front of the computer building/designing websites after stumbling upon the art form on accident at age 11 whilst browsing Pokemon fan content. Something clicked and and I am happy to say that coding has been a large part of my life since then.</p>
 
@@ -41,13 +74,19 @@
 
 		</div>
 
+
+		<!-- Projects -->
 		<div class="page" id="projects-section">
-			<p>Projects page</p>
+			<div class="all-projects-placeholder"></div>
 		</div>
 
+
+
+		<!-- Contact -->
 		<div class="page" id="contact-section">
 			<p>Contacts page</p>
 		</div>
+
 
 
 	</div>
