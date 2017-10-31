@@ -88,14 +88,14 @@ header {
   padding-top: 60px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center; }
   .content-header h1 {
     display: inline-block;
     color: black; }
   .content-header nav {
     display: inline-block;
     text-align: right;
-    margin-top: 40px;
     font-size: 27px; }
 
 .content-wrapper {
@@ -114,6 +114,49 @@ header {
     line-height: 180%;
     font-size: 19px;
     color: #333333; }
+
+#about-section .about-container {
+  display: flex;
+  align-items: center; }
+#about-section .about-image {
+  display: inline;
+  padding-right: 20px; }
+#about-section .about-description {
+  display: inline; }
+
+#contact-section .contact-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%; }
+#contact-section .contact-container a:hover {
+  color: black; }
+#contact-section .contact-block {
+  text-align: center;
+  display: block;
+  margin: 10px;
+  width: 120px;
+  font-weight: bold; }
+#contact-section .contact-block .tooltiptext {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 2px 5px 2px 5px;
+  border-radius: 6px;
+  z-index: 1;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  text-transform: lowercase; }
+#contact-section .contact-block:hover .tooltiptext {
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100); }
 
 /* project thumbnails */
 .project-thumb-container {
