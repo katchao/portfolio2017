@@ -17,6 +17,13 @@ $font-stack: 'Open Sans', sans-serif;
 	transform: translateY(-$percent);
 }
 
+@mixin opacity($value){
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+
 
 html,
 body {
@@ -33,7 +40,7 @@ body {
 	@include transition(opacity, 2s);
 }
 
-.hidden { opacity: 0; }
+.hidden { @include opacity(0); }
 
 
 
@@ -141,8 +148,8 @@ header {
 .content-wrapper {
 	display: none;
 	position: relative;
-	margin-top: 30px;
-	width: 60%;
+	padding-top: 50px;
+	width: 65%;
 	margin: auto;
 
 	#about-section { display: none; }
@@ -171,12 +178,15 @@ header {
 .project-thumb-container {
   position: relative;
   display: inline-block;
-    animation: fadeIn 0.5s linear;
+   animation: fadeIn 0.5s linear;
   animation-fill-mode: both;
+  margin: 10px;
+
 }
 
 .project-thumbnail {
   display: block;
+  
 }
 
 .project-thumb-overlay {
@@ -187,18 +197,19 @@ header {
   right: 0;
   height: 100%;
   width: 100%;
-  opacity: 0;
+  @include opacity(0.8);
   transition: .5s ease;
-  background-color: #008CBA;
+  background-color: #fff;
 }
 
 .project-thumb-container:hover .project-thumb-overlay {
-  opacity: 1;
+  opacity: 0;
 }
 
 .project-thumb-text {
-  color: white;
-  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
   position: relative;
   left: 50%;
   top: 50%;
@@ -210,7 +221,7 @@ header {
 
 // fly in animation for project thumbnails
 
-$total-items: 5;
+$total-items: 6;
 
 
 @for $i from 1 through $total-items {

@@ -17,7 +17,9 @@ body {
   transition: opacity 2s; }
 
 .hidden {
-  opacity: 0; }
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0); }
 
 a {
   text-decoration: none;
@@ -99,8 +101,8 @@ header {
 .content-wrapper {
   display: none;
   position: relative;
-  margin-top: 30px;
-  width: 60%;
+  padding-top: 50px;
+  width: 65%;
   margin: auto; }
   .content-wrapper #about-section {
     display: none; }
@@ -118,7 +120,8 @@ header {
   position: relative;
   display: inline-block;
   animation: fadeIn 0.5s linear;
-  animation-fill-mode: both; }
+  animation-fill-mode: both;
+  margin: 10px; }
 
 .project-thumbnail {
   display: block; }
@@ -131,16 +134,19 @@ header {
   right: 0;
   height: 100%;
   width: 100%;
-  opacity: 0;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
   transition: .5s ease;
-  background-color: #008CBA; }
+  background-color: #fff; }
 
 .project-thumb-container:hover .project-thumb-overlay {
-  opacity: 1; }
+  opacity: 0; }
 
 .project-thumb-text {
-  color: white;
-  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
   position: relative;
   left: 50%;
   top: 50%;
@@ -162,6 +168,9 @@ header {
 
 .project-thumb-container:nth-child(5) {
   animation-delay: 1.25s; }
+
+.project-thumb-container:nth-child(6) {
+  animation-delay: 1.5s; }
 
 @-webkit-keyframes fadeIn {
   0% {

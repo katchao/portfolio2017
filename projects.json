@@ -1,26 +1,38 @@
 [
 	{
 		"title": "ConnectedCycle Fleet Management",
-		"description": "test description",
-		"url": "test",
-		"github": "test",
-		"thumbnail": "test",
-		"stack": "test"
+		"slug": "connected-cycle",
+		"thumbnail": "images/thumbnail-connected-cycle.jpg",
+		"description": "test description"
 	},
 	{
 		"title": "The Silver Islands",
-		"description": "test",
-		"url": "test",
-		"github": "test",
-		"thumbnail": "test",
-		"stack": "test"
+		"slug": "the-silver-islands",
+		"thumbnail": "images/thumbnail-silver-islands.jpg",
+		"description": "test"
 	},
 	{
 		"title": "Good Vibes",
-		"description": "test",
-		"url": "test",
-		"github": "test",
-		"thumbnail": "test",
-		"stack": "test"
+		"slug": "good-vibes",
+		"thumbnail": "images/thumbnail-good-vibes.jpg"
+	},
+	{
+		"title": "Top 100 Movies Visualization",
+		"slug": "top-100-movies",
+		"thumbnail": "images/thumbnail-top-100.jpg",
+		"banner": "http://via.placeholder.com/600x300",
+		"stack": "d3"
+	},
+	{
+		"title": "Poisson Image Stitcher",
+		"slug": "poisson-image-stitcher",
+		"thumbnail": "images/thumbnail-poisson.jpg"
+	},
+	{
+		"title": "Angry Charmander Game",
+		"slug": "angry-charmander",
+		"thumbnail": "images/thumbnail-angry-charmander.jpg",
+		"stack": "Flash",
+		"description": "<object width=\"400\" height=\"500\" data=\"Game.swf\"><\/object><h2>Instructions<\/h2><strong>Arrow Keys<\/strong> to move.<br \/><strong>Spacebar<\/strong> to shoot.<p style=\"color: aaaaaa\">Aside from the illustration in the main screen, all artwork is from the official Pokemon games and I do not own any of it.<\/p>"
 	}
 ]

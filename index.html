@@ -3,6 +3,7 @@
 	<title>katherine chao</title>
 
 	<link rel="stylesheet" type="text/css" href="styles/styles.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
@@ -34,9 +35,9 @@
 		<div class="all-projects">
 
 			{{#each list}}
-				<a href="#">
+				<a href="{{ link_to this.slug }}">
 					<div class="project-thumb-container">
-						<img src="http://placehold.it/257x200.jpg" alt="Avatar" class="project-thumbnail">
+						<img src="{{ this.thumbnail }}" alt="Avatar" class="project-thumbnail" width="325px" />
 						<div class="project-thumb-overlay">
 							<div class="project-thumb-text">{{ this.title }}</div>
 						</div>
@@ -46,15 +47,25 @@
 
 		</div>
 
-
-
 	</script>
 
 
 
-	<script id="project-template" type="text/x-handlebars-template">
-		<div class="project">
+	<script id="single-project-template" type="text/x-handlebars-template">
+		<div class="single-project">
+			{{#if project}}
+				<img src="{{ project.banner }}" />
+				<h2>{{ project.title }}</h2>
 
+				{{#if project.description }}
+					<div class="project-description"></div>
+				{{/if}}
+
+
+
+			{{ else }}
+				Error
+			{{/if}}
 		</div>
 	</script>
 
@@ -77,14 +88,20 @@
 
 		<!-- Projects -->
 		<div class="page" id="projects-section">
+			<p>Listed below are some projects that I've made myself/have been involved in, some very old and some new. Click on any one of them to browse more details.</p>
+
 			<div class="all-projects-placeholder"></div>
+		</div>
+
+		<div class="page" id="single-project-section">
+			<div class="single-project-placeholder"></div>
 		</div>
 
 
 
 		<!-- Contact -->
 		<div class="page" id="contact-section">
-			<p>Contacts page</p>
+			<p>Please refer to the links below if you're interested in reaching out to me for any reason!</p>
 		</div>
 
 

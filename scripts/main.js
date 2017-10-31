@@ -1,10 +1,9 @@
 
 
-
 var contentShowing = false;
 var currentPage;
 var currentLink;
-
+var projectsList = [];
 
 // change from intro to content view
 function flipView() {
@@ -26,41 +25,69 @@ function flipView() {
 
 
 
+// render page from hash
+function render(url) {
+	flipView();
+	if(url === 'about') {
+		renderPage(aboutLink);
+	}
+	else if(url === 'projects') {
+		renderPage(projectsLink);
+	}
+	else if(url === 'contact') {
+		renderPage(contactLink);
+	}
+	else if(url.indexOf('view/') > -1) {
+		// get slug from url
+		var projectSlug = url.split('/').pop();
+		renderPage(singleProjectLink, projectSlug);
+		
+	}
+}
+
+
 // change the page as someone clicks on a link
-function flipPage(page) {
+function renderPage(page, projectSlug) {
+	// two cases to make sure the old content fades out before the new content fades in
 	if(currentPage) {
-		$(this.currentPage.section).fadeOut(function() { setPage(page) });
+		$(this.currentPage.section).fadeOut(function() { setPage(page, projectSlug) });
 	}
 	else {
-		setPage(page);
+		setPage(page, projectSlug);
 	}
 
 }
 
 
 
-
-// called from flipPage to avoid repeating code
-function setPage(page) {
+// called from renderPage to avoid repeating code
+function setPage(page, projectSlug) {
 	currentPage = page;
 	if(currentPage === projectsLink) {
-		loadAllProjectsTemplate();
+		renderAllProjects();
+	}
+
+	else if(currentPage === singleProjectLink) {
+		renderSingleProject(projectSlug);
 	}
 	$(this.currentPage.section).fadeIn('slow');
 }
 
 
-
-
 // set up the all Projects page
-function loadAllProjectsTemplate() {
+function renderAllProjects() {
 	var theTemplateScript = $("#all-projects-template").html();
 	var theTemplate = Handlebars.compile(theTemplateScript);
 
 
 	$.getJSON( "projects.json",
 		function(data) {
+			projectsList = data;
 			var context = { list: data };
+
+			Handlebars.registerHelper('link_to', function(str) {
+				return new Handlebars.SafeString('#view/' + str);
+			});
 
 			var theCompiledHtml = theTemplate(context);
 			$('.all-projects-placeholder').html(theCompiledHtml);
@@ -71,6 +98,57 @@ function loadAllProjectsTemplate() {
 			var err = textStatus + ", " + error;
 			console.log( "Request Failed: " + err );
 		});
+}
+
+
+
+function renderSingleProject(projectSlug) {
+
+	if(!projectsList.length) {
+		$.getJSON( "projects.json",
+			function(data) {
+				projectsList = data;
+				console.log(projectsList);
+
+				renderSingleProjectTemplate(projectSlug);
+			})
+		.fail(
+			function(jqxhr, textStatus, error) {
+				var err = textStatus + ", " + error;
+				console.log( "Request Failed: " + err );
+			});
+	}
+
+	else {
+		renderSingleProjectTemplate(projectSlug);
+	}
+
+}
+
+
+function renderSingleProjectTemplate(projectSlug) {
+
+
+	var theTemplateScript = $("#single-project-template").html();
+	var theTemplate = Handlebars.compile(theTemplateScript);
+
+	var thisProject = null;
+
+	for(var i = 0; i < projectsList.length; i++) {
+		if(projectsList[i].slug === projectSlug) {
+			thisProject = projectsList[i];
+		}
+	}
+
+	console.log(thisProject);
+
+	var context = { project: thisProject };
+
+			var theCompiledHtml = theTemplate(context);
+			$('.single-project-placeholder').html(theCompiledHtml).fadeIn();
+			$('.project-description').html(thisProject.description);
+
+
 }
 
 
@@ -103,26 +181,6 @@ function rollBg() {
 }
 
 
-// render page from hash
-function render(url) {
-	flipView();
-	if(url === 'about') {
-		flipPage(aboutLink);
-	} else if(url === 'projects') {
-		flipPage(projectsLink);
-	} else if(url === 'contact') {
-		flipPage(contactLink);
-	} else if(url === 'project') {
-		renderSingleProject();
-	}
-}
-
-function renderSingleProject() {
-	
-}
-
-
-
 
 
 $(function(){
@@ -144,6 +202,11 @@ $(function(){
 		name: "Projects",
 		link: document.getElementById('projects-link'),
 		section: document.getElementById('projects-section'),
+	}
+	singleProjectLink = {
+		name: "Single Project",
+		link: document.getElementById('projects-link'),
+		section: document.getElementById('single-project-section'),
 	}
 	contactLink = {
 		name: "Contact",
