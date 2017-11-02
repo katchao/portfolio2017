@@ -140,14 +140,11 @@ function renderSingleProjectTemplate(projectSlug) {
 		}
 	}
 
-	console.log(thisProject);
-
 	var context = { project: thisProject };
 
-			var theCompiledHtml = theTemplate(context);
-			$('.single-project-placeholder').html(theCompiledHtml).fadeIn();
-			$('.project-description').html(thisProject.description);
-
+	var theCompiledHtml = theTemplate(context);
+	$('.single-project-placeholder').html(theCompiledHtml).fadeIn();
+	$('.project-description').html(thisProject.description);
 
 }
 

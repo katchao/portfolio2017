@@ -5,8 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="styles/styles.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -39,7 +37,7 @@
 					<div class="project-thumb-container">
 						<img src="{{ this.thumbnail }}" alt="Avatar" class="project-thumbnail" width="325px" />
 						<div class="project-thumb-overlay">
-							<div class="project-thumb-text">{{ this.title }}</div>
+							<div class="project-thumb-text">{{ this.title }}<br /><span class="project-stack">{{ this.stack }}</span></div>
 						</div>
 					</div>
 				</a>
@@ -53,14 +51,32 @@
 
 	<script id="single-project-template" type="text/x-handlebars-template">
 		<div class="single-project">
+			<a href="#projects"><i class="fa fa-backward" aria-hidden="true"></i> Go back to all projects</a>
 			{{#if project}}
-				<img src="{{ project.banner }}" />
+
+				{{#if project.video }}
+					<div class="project-video">
+						<iframe width="640" height="390" src="{{ project.video }}" frameborder="0" allowfullscreen></iframe>
+					</div>
+				{{/if}}
+
 				<h2>{{ project.title }}</h2>
+
+				{{#if project.link }}
+					<strong><i class="fa fa-eye" aria-hidden="true"></i> Link:</strong> <a href="{{ project.link }}" target="_blank">View</a><br />
+				{{/if}}
+
+				{{#if project.github }}
+					<strong><i class="fa fa-code" aria-hidden="true"></i> Git Repo:</strong> <a href="{{ project.github }}" target="_blank"> View</a><br />
+				{{/if}}
+
+				{{#if project.stack }}
+					<strong><i class="fa fa-list" aria-hidden="true"></i> Stack:</strong> {{ project.stack }}<br />
+				{{/if}}
 
 				{{#if project.description }}
 					<div class="project-description"></div>
 				{{/if}}
-
 
 
 			{{ else }}
@@ -164,7 +180,8 @@
 	</div>
 
 
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 	<script src="scripts/main.js"></script>
 
 

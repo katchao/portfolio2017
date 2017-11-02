@@ -158,6 +158,10 @@ header {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100); }
 
+#single-project-section .project-video {
+  text-align: center;
+  margin: 20px; }
+
 /* project thumbnails */
 .project-thumb-container {
   position: relative;
@@ -177,9 +181,9 @@ header {
   right: 0;
   height: 100%;
   width: 100%;
-  opacity: 0.8;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
+  opacity: 0.85;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+  filter: alpha(opacity=85);
   transition: .5s ease;
   background-color: #fff; }
 
@@ -196,6 +200,12 @@ header {
   text-align: center;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%); }
+
+.project-stack {
+  font-size: 18px;
+  text-transform: lowercase;
+  font-weight: normal;
+  color: gray; }
 
 .project-thumb-container:nth-child(1) {
   animation-delay: 0.25s; }

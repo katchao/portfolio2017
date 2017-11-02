@@ -220,6 +220,15 @@ header {
 }
 
 
+#single-project-section {
+
+	.project-video {
+		text-align: center;
+		margin: 20px;
+	}
+}
+
+
 
 
 
@@ -253,7 +262,7 @@ header {
   right: 0;
   height: 100%;
   width: 100%;
-  @include opacity(0.8);
+  @include opacity(0.85);
   transition: .5s ease;
   background-color: #fff;
 }
@@ -274,7 +283,12 @@ header {
   -ms-transform: translate(-50%, -50%);
 }
 
-
+.project-stack {
+	font-size: 18px;
+	text-transform: lowercase;
+	font-weight: normal;
+	color: gray;
+}
 
 
 // fly in animation for project thumbnails
