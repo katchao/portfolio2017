@@ -69,6 +69,7 @@ header {
 
 .intro-header {
   text-align: center;
+  min-height: calc(~"100vh + 150px");
   position: relative;
   top: 40%;
   -webkit-transform: translateY(-40%);
@@ -234,5 +235,38 @@ header {
     top: 0px; }
   100% {
     opacity: 1; } }
+@media screen and (max-width: 568px) {
+  .bg {
+    height: 38%; }
+
+  .intro-header h1 {
+    font-size: 70px;
+    margin-bottom: 10px; }
+  .intro-header nav a {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px; }
+  .intro-header .middot {
+    display: none; }
+
+  .content-wrapper {
+    width: 80%; }
+
+  .content-header {
+    text-align: center;
+    justify-content: center;
+    padding-top: 30px; }
+    .content-header h1 {
+      font-size: 50px; }
+
+  #about-section .about-container {
+    flex-direction: column; }
+  #about-section .about-image {
+    padding-right: 0px; }
+    #about-section .about-image img {
+      height: 300px; }
+
+  .all-projects {
+    text-align: center; } }
 
 /*# sourceMappingURL=styles.css.map */
