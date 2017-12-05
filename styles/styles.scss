@@ -157,12 +157,21 @@ header {
 	#about-section { display: none; }
 	#projects-section { display: none; }
 	#contact-section { display: none; }
+	#single-project-section { display: none; }
 
 	.page {
 		line-height: 180%;
 		font-size: 19px;
 		color: #333333;
+		margin-bottom: 50px;
 	}
+}
+
+footer {
+	margin: 50px;
+	text-align: center;
+	color: #c3c3c3;
+	font-size: 13px;
 }
 
 #about-section {

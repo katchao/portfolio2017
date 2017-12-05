@@ -28,6 +28,7 @@ function flipView() {
 // render page from hash
 function render(url) {
 	flipView();
+
 	if(url === 'about') {
 		renderPage(aboutLink);
 	}
@@ -104,11 +105,11 @@ function renderAllProjects() {
 
 function renderSingleProject(projectSlug) {
 
+
 	if(!projectsList.length) {
 		$.getJSON( "projects.json",
 			function(data) {
 				projectsList = data;
-				console.log(projectsList);
 
 				renderSingleProjectTemplate(projectSlug);
 			})
@@ -187,6 +188,10 @@ $(function(){
 	var headerTemplate = Handlebars.compile($("#header-template").html());
 	var headerTemplateComp = headerTemplate();
 	$('.header-placeholder').html(headerTemplateComp);
+
+	var footerTemplate = Handlebars.compile($("#footer-template").html());
+	var footerTemplateComp = footerTemplate();
+	$('.footer-placeholder').html(footerTemplateComp);
 
 
 	// links setup
