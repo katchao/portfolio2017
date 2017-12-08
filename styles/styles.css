@@ -172,44 +172,44 @@ footer {
   text-align: center;
   margin: 20px; }
 
-/* project thumbnails */
-.project-thumb-container {
-  position: relative;
-  display: inline-block;
-  animation: fadeIn 0.5s linear;
-  animation-fill-mode: both;
-  margin: 10px; }
-
-.project-thumbnail {
-  display: block; }
-
-.project-thumb-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0.85;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
-  filter: alpha(opacity=85);
-  transition: .5s ease;
-  background-color: #fff; }
-
-.project-thumb-container:hover .project-thumb-overlay {
-  opacity: 0; }
-
-.project-thumb-text {
-  color: black;
-  font-weight: bold;
-  font-size: 22px;
-  position: relative;
-  left: 50%;
-  top: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%); }
+.all-projects {
+  /* project thumbnails */ }
+  .all-projects .project-thumb-container {
+    position: relative;
+    display: inline-block;
+    animation: fadeIn 0.5s linear;
+    animation-fill-mode: both;
+    margin: 10px; }
+  .all-projects .project-thumbnail {
+    display: block; }
+  .all-projects .project-thumb-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+    filter: alpha(opacity=90);
+    transition: .5s ease;
+    background-color: #fff;
+    margin: 8px; }
+  .all-projects .project-thumb-container:hover .project-thumb-overlay {
+    opacity: 0; }
+  .all-projects .project-thumb-text {
+    color: black;
+    font-size: 22px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); }
+  .all-projects .project-thumb-title {
+    font-family: 'Unica One', cursive;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 25px; }
 
 .project-stack {
   font-size: 18px;
