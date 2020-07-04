@@ -1,206 +1,251 @@
 <html>
-<head>
-	<title>katherine chao</title>
-
-	<link rel="stylesheet" type="text/css" href="styles/styles.css">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-	<script src="scripts/main.js"></script>
-	
-
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<body>
-
-	<div class="bg"></div>
-	<div class="bg hidden"></div>
-
-
-	<!-- Handlebar templates -->
-	<script id="header-template" type="text/x-handlebars-template">
-		<h1>katherine chao</h1>
-		<nav>
-			<a href="#about" class="nav-link" id="about-link">about</a>
-			<span class="middot">&middot;</span>
-			<a href="#projects" class="nav-link" id="projects-link">projects</a>
-			<span class="middot">&middot;</span>
-			<a href="#contact" class="nav-link" id="contact-link">contact</a>
-		</nav>
-	</script>
-
-
-
-	<script id="all-projects-template" type="text/x-handlebars-template">
-		<div class="all-projects">
-
-			{{#each list}}
-				<a href="{{ link_to this.slug }}">
-					<div class="project-thumb-container">
-						<img src="{{ this.thumbnail }}" alt="Avatar" class="project-thumbnail" width="325px" />
-						<div class="project-thumb-overlay">
-							<div class="project-thumb-text">
-								<div class="project-thumb-title">{{ this.title }}</div>
-								<span class="project-stack">{{ this.stack }}</span></div>
-						</div>
-					</div>
-				</a>
-			{{/each}}
-
-		</div>
-
-	</script>
-
-
-
-	<script id="single-project-template" type="text/x-handlebars-template">
-		<div class="single-project">
-			<a href="#projects"><i class="fa fa-backward" aria-hidden="true"></i> Go back to all projects</a>
-			{{#if project}}
-
-				{{#if project.video }}
-					<div class="project-video">
-						<iframe width="640" height="390" src="{{ project.video }}" frameborder="0" allowfullscreen></iframe>
-					</div>
-				{{/if}}
-
-				<h2>{{ project.title }}</h2>
-
-				{{#if project.link }}
-					<strong><i class="fa fa-eye" aria-hidden="true"></i> Link:</strong> <a href="{{ project.link }}" target="_blank">View</a><br />
-				{{/if}}
-
-				{{#if project.github }}
-					<strong><i class="fa fa-code" aria-hidden="true"></i> Git Repo:</strong> <a href="{{ project.github }}" target="_blank"> View</a><br />
-				{{/if}}
-
-				{{#if project.stack }}
-					<strong><i class="fa fa-list" aria-hidden="true"></i> Stack:</strong> {{ project.stack }}<br />
-				{{/if}}
-
-				{{#if project.description }}
-					<div class="project-description"></div>
-				{{/if}}
-
-
-			{{ else }}
-				Error
-			{{/if}}
-		</div>
-	</script>
-
-
-
-	<script id="footer-template" type="text/x-handlebars-template">
-		<footer>
-			&copy; 2017 Katherine Chao. All rights reserved.
-		</footer>
-	</script>
-
-
-
-	<!-- start of actual HTML -->
-	<header class="header-placeholder"></header>
-
-
-	<div class="content-wrapper">
-
-		<!-- About -->
-		<div class="page" id="about-section">
-			<div class="about-container">
-
-				<div class="about-image">
-					<img src="images/portrait.png" />
-				</div>
-				<div class="about-description">
-					<p>Hello, my name is Katherine Chao and welcome to my corner of the Internet!</p>
-
-					<p>I'm a software engineer, with my interest in programming starting very young, at age 11, and I haven't stopped since. I mostly specialize in creating front end interfaces for the web but I'm extremely flexible and have worn many hats and am always looking to expand my horizons.</p>
-
-					<p>I have a Bachelors in Computer Science from UC Berkeley and an Msc. in Computer Science with a specialization in HCI from Grenoble Institute of Technology in France. My resume can be viewed <a href="resume_katherine_chao.pdf" target="_blank">here</a>.</p>
-
-					<p>Outside of programming, I love digital art, learning foreign languages, traveling (often solo!), and reading about psychology.</p>
-				</div>
-
-			</div>
-
-
-			<div class="footer-placeholder"></div>
-		</div>
-
-
-		<!-- Projects -->
-		<div class="page" id="projects-section">
-			<p>Listed below are some projects that I've made myself/have been involved in, some very old and some new. Click on any one of them to browse more details.</p>
-
-			<div class="all-projects-placeholder"></div>
-			<div class="footer-placeholder"></div>
-		</div>
-
-
-
-
-		<div class="page" id="single-project-section">
-			<div class="single-project-placeholder"></div>
-			<div class="footer-placeholder"></div>
-		</div>
-
-
-
-
-		<!-- Contact -->
-		<div class="page" id="contact-section">
-			<p>Please refer to the links below if you're interested in reaching out to me for any reason!</p>
-
-			<div class="contact-container">
-
-				<a href="mailto:me@katherinechao.com">
-					<div class="contact-block">
-						<i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i><br />
-						<span class="tooltiptext">Email</span>
-					</div>
-				</a>
-
-				<a href="https://www.linkedin.com/in/katherine-chao/" target="_blank">
-					<div class="contact-block">
-						<i class="fa fa-linkedin fa-3x" aria-hidden="true"></i><br />
-						<span class="tooltiptext">LinkedIn</span>
-					</div>
-				</a>
-
-				<a href="https://github.com/katchao" target="_blank">
-					<div class="contact-block">
-						<i class="fa fa-github fa-3x" aria-hidden="true"></i><br />
-						<span class="tooltiptext">Github</span>
-					</div>
-				</a>
-
-				<a href="https://finished-eraser.tumblr.com/" target="_blank">
-					<div class="contact-block">
-						<i class="fa fa-tumblr fa-3x" aria-hidden="true"></i><br />
-						<span class="tooltiptext">Art Blog</span>
-					</div>
-				</a>
-
-				<a href="http://travel.katherinechao.com/" target="_blank">
-					<div class="contact-block">
-						<i class="fa fa-wordpress fa-3x" aria-hidden="true"></i><br />
-						<span class="tooltiptext">Travel Blog</span>
-					</div>
-				</a>
-			</div>
-
-			<div class="footer-placeholder"></div>
-
-		</div>
-
-
-	</div>
-
-
-
-</body>
+   <head>
+      <title>katherine chao</title>
+
+      <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+      <link
+         rel="stylesheet"
+         type="text/css"
+         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      />
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+      <script src="scripts/main.js"></script>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+   </head>
+
+   <body>
+      <div class="bg"></div>
+      <div class="bg hidden"></div>
+
+      <!-- Handlebar templates -->
+      <script id="header-template" type="text/x-handlebars-template">
+         <h1>
+            katherine chao
+         </h1>
+         <nav>
+            <a href="#about" class="nav-link" id="about-link">
+               about
+            </a>
+            <span class="middot">
+               &middot;
+            </span>
+            <a href="#projects" class="nav-link" id="projects-link">
+               projects
+            </a>
+            <span class="middot">
+               &middot;
+            </span>
+            <a href="#contact" class="nav-link" id="contact-link">
+               contact
+            </a>
+         </nav>
+      </script>
+
+      <script id="all-projects-template" type="text/x-handlebars-template">
+         <div class="all-projects">
+            {{#each list}}
+               <a href="{{link_to this.slug}}">
+                  <div class="project-thumb-container">
+                     <img
+                        src="{{this.thumbnail}}"
+                        alt="Avatar"
+                        class="project-thumbnail"
+                        width="325px"
+                     />
+                     <div class="project-thumb-overlay">
+                        <div class="project-thumb-text">
+                           <div class="project-thumb-title">
+                              {{this.title}}
+                           </div>
+                           <span class="project-stack">
+                              {{this.stack}}
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+               </a>
+            {{/each}}
+         </div>
+      </script>
+
+      <script id="single-project-template" type="text/x-handlebars-template">
+         <div class="single-project">
+            <a href="#projects">
+               <i class="fa fa-backward" aria-hidden="true"></i>
+               Go back to all projects
+            </a>
+            {{#if project}}
+               {{#if project.video}}
+                  <div class="project-video">
+                     <iframe
+                        width="640"
+                        height="390"
+                        src="{{project.video}}"
+                        frameborder="0"
+                        allowfullscreen
+                     ></iframe>
+                  </div>
+               {{/if}}
+
+               <h2>
+                  {{project.title}}
+               </h2>
+
+               {{#if project.link}}
+                  <strong>
+                     <i class="fa fa-eye" aria-hidden="true"></i>
+                     Link:
+                  </strong>
+
+                  <a href="{{project.link}}" target="_blank">
+                     View
+                  </a>
+                  <br />
+               {{/if}}
+
+               {{#if project.github}}
+                  <strong>
+                     <i class="fa fa-code" aria-hidden="true"></i>
+                     Git Repo:
+                  </strong>
+
+                  <a href="{{project.github}}" target="_blank">
+                     View
+                  </a>
+                  <br />
+               {{/if}}
+
+               {{#if project.stack}}
+                  <strong>
+                     <i class="fa fa-list" aria-hidden="true"></i>
+                     Stack:
+                  </strong>
+                  {{project.stack}}<br />
+               {{/if}}
+
+               {{#if project.description}}
+                  <div class="project-description"></div>
+               {{/if}}
+            {{else}}
+               Error
+            {{/if}}
+         </div>
+      </script>
+
+      <script id="footer-template" type="text/x-handlebars-template">
+         <footer>
+            &copy; 2017 Katherine Chao. All rights reserved.
+         </footer>
+      </script>
+
+      <!-- start of actual HTML -->
+      <header class="header-placeholder"></header>
+
+      <div class="content-wrapper">
+         <!-- About -->
+         <div class="page" id="about-section">
+            <div class="about-container">
+               <div class="about-image">
+                  <img src="images/portrait.png" />
+               </div>
+               <div class="about-description">
+                  <p>
+                     Hello, my name is Katherine Chao and welcome to my corner
+                     of the Internet!
+                  </p>
+
+                  <p>
+                     I'm a software engineer, with my interest in programming
+                     starting very young, at age 11, and I haven't stopped
+                     since. I mostly specialize in creating front end interfaces
+                     for the web but I'm extremely flexible and have worn many
+                     hats and am always looking to expand my horizons.
+                  </p>
+
+                  <p>
+                     I have a Bachelors in Computer Science from UC Berkeley and
+                     an Msc. in Computer Science with a specialization in HCI
+                     from Grenoble Institute of Technology in France. My resume
+                     can be viewed
+                     <a href="resume_katherine_chao.pdf" target="_blank">here</a
+                     >.
+                  </p>
+
+                  <p>
+                     Outside of programming, I love digital art, learning
+                     foreign languages, traveling (often solo!), and reading
+                     about psychology.
+                  </p>
+               </div>
+            </div>
+
+            <div class="footer-placeholder"></div>
+         </div>
+
+         <!-- Projects -->
+         <div class="page" id="projects-section">
+            <p>
+               Listed below are some projects that I've made myself/have been
+               involved in, some very old and some new. Click on any one of them
+               to browse more details.
+            </p>
+
+            <div class="all-projects-placeholder"></div>
+            <div class="footer-placeholder"></div>
+         </div>
+
+         <div class="page" id="single-project-section">
+            <div class="single-project-placeholder"></div>
+            <div class="footer-placeholder"></div>
+         </div>
+
+         <!-- Contact -->
+         <div class="page" id="contact-section">
+            <p>
+               Please refer to the links below if you're interested in reaching
+               out to me for any reason!
+            </p>
+
+            <div class="contact-container">
+               <a href="mailto:me@katherinechao.com">
+                  <div class="contact-block">
+                     <i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i
+                     ><br />
+                     <span class="tooltiptext">Email</span>
+                  </div>
+               </a>
+
+               <a
+                  href="https://www.linkedin.com/in/katherine-chao/"
+                  target="_blank"
+               >
+                  <div class="contact-block">
+                     <i class="fa fa-linkedin fa-3x" aria-hidden="true"></i
+                     ><br />
+                     <span class="tooltiptext">LinkedIn</span>
+                  </div>
+               </a>
+
+               <a href="https://github.com/katchao" target="_blank">
+                  <div class="contact-block">
+                     <i class="fa fa-github fa-3x" aria-hidden="true"></i><br />
+                     <span class="tooltiptext">Github</span>
+                  </div>
+               </a>
+
+               <a href="https://finished-eraser.tumblr.com/" target="_blank">
+                  <div class="contact-block">
+                     <i class="fa fa-tumblr fa-3x" aria-hidden="true"></i><br />
+                     <span class="tooltiptext">Art Blog</span>
+                  </div>
+               </a>
+            </div>
+
+            <div class="footer-placeholder"></div>
+         </div>
+      </div>
+   </body>
 </html>
