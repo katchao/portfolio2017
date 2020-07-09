@@ -1,9 +1,8 @@
-import * as constants from "../constants.js";
+import * as constants from "./constants.js";
+import rollBg from "./bg-generator.js";
 
 var contentShowing = false;
 var currentPage;
-var currentLink;
-var projectsList = [];
 
 const bgInterval = setInterval(rollBg, 5000);
 
@@ -42,20 +41,20 @@ function render(url) {
 }
 
 // change the page as someone clicks on a link
-function renderPage(page, projectSlug) {
+function renderPage(pageInfo, projectSlug) {
 	// two cases to make sure the old content fades out before the new content fades in
 	if (currentPage) {
 		$(currentPage.section).fadeOut(function () {
-			setPage(page, projectSlug);
+			setPage(pageInfo, projectSlug);
 		});
 	} else {
-		setPage(page, projectSlug);
+		setPage(pageInfo, projectSlug);
 	}
 }
 
 // called from renderPage to avoid repeating code
-function setPage(page, projectSlug) {
-	currentPage = page;
+function setPage(pageInfo, projectSlug) {
+	currentPage = pageInfo;
 	if (currentPage === constants.PROJECTS_LINK) {
 		renderAllProjects();
 	} else if (currentPage === constants.SINGLE_PROJECT_LINK) {
@@ -66,20 +65,20 @@ function setPage(page, projectSlug) {
 
 // set up the all Projects page
 function renderAllProjects() {
-	var theTemplateScript = $("#all-projects-template").html();
-	var theTemplate = Handlebars.compile(theTemplateScript);
-	var context = { list: constants.PROJECTS };
-
 	Handlebars.registerHelper("link_to", function (str) {
 		return new Handlebars.SafeString("#view/" + str);
 	});
-
-	var theCompiledHtml = theTemplate(context);
-	$(".all-projects-placeholder").html(theCompiledHtml);
+	const template = Handlebars.compile($("#all-projects-template").html());
+	const compiled = template({ list: constants.PROJECTS });
+	$(".all-projects-placeholder").html(compiled);
 }
 
 function renderSingleProject(projectSlug) {
-	renderSingleProjectTemplate(projectSlug);
+	const project = getProjectFromSlug(projectSlug);
+	const template = Handlebars.compile($("#single-project-template").html());
+	const compiled = template({ project });
+	$(".single-project-placeholder").html(compiled).fadeIn();
+	$(".project-description").html(project.description);
 }
 
 function getProjectFromSlug(projectSlug) {
@@ -92,47 +91,15 @@ function getProjectFromSlug(projectSlug) {
 	return thisProject;
 }
 
-function renderSingleProjectTemplate(projectSlug) {
-	var theTemplateScript = $("#single-project-template").html();
-	var theTemplate = Handlebars.compile(theTemplateScript);
-	const project = getProjectFromSlug(projectSlug);
-	var context = { project };
-	var theCompiledHtml = theTemplate(context);
-	$(".single-project-placeholder").html(theCompiledHtml).fadeIn();
-	$(".project-description").html(project.description);
-}
-
-// random bg generator
-function newGradient() {
-	var c1 = {
-		r: Math.floor(Math.random() * 255),
-		g: Math.floor(Math.random() * 255),
-		b: Math.floor(Math.random() * 255),
-	};
-	var c2 = {
-		r: Math.floor(Math.random() * 255),
-		g: Math.floor(Math.random() * 255),
-		b: Math.floor(Math.random() * 255),
-	};
-
-	c1.rgb = "rgba(" + c1.r + "," + c1.g + "," + c1.b + ", 0.8)";
-	c2.rgb = "rgba(" + c2.r + "," + c2.g + "," + c2.b + ", 0.8)";
-	return "radial-gradient(at top left, " + c1.rgb + ", " + c2.rgb + ")";
-}
-
-// random bg generator
-function rollBg() {
-	$(".bg.hidden").css("background", newGradient());
-	$(".bg").toggleClass("hidden");
-}
-
-$(function () {
-	// Handlebars template for header
+function renderHeaderAndFooter() {
 	var headerTemplate = Handlebars.compile($("#header-template").html());
 	var footerTemplate = Handlebars.compile($("#footer-template").html());
 	$(".header-placeholder").html(headerTemplate());
 	$(".footer-placeholder").html(footerTemplate());
+}
 
+$(function () {
+	renderHeaderAndFooter();
 	// page setup
 	$(".content-wrapper").hide();
 	$("header").addClass("intro-header");
@@ -149,7 +116,3 @@ $(function () {
 		render(decodeURI(window.location.hash.substring(1)));
 	});
 });
-
-/* credits:
-	animated background: http://www.jqueryscript.net/animation/Creating-Animated-Background-with-Random-Gradient-Transitions-using-jQuery.html
-*/

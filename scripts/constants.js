@@ -12,18 +12,17 @@ const PROJECTS = [
 		title: "The Silver Islands",
 		slug: "the-silver-islands",
 		thumbnail: "images/thumbnail-silver-islands.jpg",
-		stack: "Django",
+		stack: "React",
 		github: "https://github.com/katchao/poke",
 		link: "http://www.silver-islands.com",
 		description:
-			"Pokemon art website that I used to develop in my free time. I created it in 2006 and therefore represents the origin of my interest in computers and coding. From maintaining this website I've learned about design, ways to create interactive/useful content, SEO, how to manage a small community of ~100 members, and much, much more. I used to maintain it almost daily throughout middle school and high school, although sadly, since the beginning of college and beyond, it's fallen off my radar. One day I hope to revive the project.",
+			"Pokemon art website that I used to develop in my free time. I created it in 2006 and therefore represents the origin of my interest in computers and coding. From maintaining this website I've learned about design, ways to create interactive/useful content, SEO, how to manage a small community of ~100 members, and much, much more. I used to maintain it almost daily throughout middle school and high school, although sadly, since the beginning of college and beyond, it's fallen off my radar. The last revamp was in 2020 but otherwise it is not under active development.",
 	},
 	{
 		title: "Good Vibes",
 		slug: "good-vibes",
 		thumbnail: "images/thumbnail-good-vibes.jpg",
 		stack: "Android",
-		video: "https://www.youtube.com/embed/wCq8I4pw-mE",
 		description:
 			'<p>Built as a team of 5 for a class project, the Good Vibes phone and smartwatch applications provide a supportive, anonymous community for teenagers, ages 13-19, who are suffering from depression.</p><p>In the mobile application, teenagers can enter their daily mood and browse through updates from their community. The mobile application also has a Beat Lab where a teen can compose a custom vibration pattern to send to a peer in need.</p><p>With Good Vibes, if a user is having a bad day, they can ask for help with a tap of a button. Once a cry for help is sent, nearby teens will receive a notification that a user is requesting support and can send personal messages with a custom vibration to the user. The teen in need can then directly feel the vibrations and read the notifications on their smartwatch without having to reach for their mobile device.</p><p>Sample screenshots:</p><p><img src="images/goodvibes-1.png" /> <img src="images/goodvibes-2.png" /> <img src="images/goodvibes-3.png" /> <img src="images/goodvibes-4.png" /></p>',
 	},
